@@ -60,9 +60,3 @@ RegisterNUICallback('close', function()
     Wait(1000)
 	SetNUIState(false)
 end)
-
-
-
-RegisterCommand("tp_notify", function(source, args)
-    TriggerEvent("tp_notify:sendNotification", "Mailbox Notification", "You just received a parcel! Please come to the station to receive the parcel and pay the required amount", "mail", "info", 15)
-end)
