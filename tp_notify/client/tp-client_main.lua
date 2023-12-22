@@ -1,6 +1,5 @@
-
-
 local HasNotificationActive = false
+local CooldownTime          = 0
 
 -----------------------------------------------------------
 --[[ Events ]]--
@@ -9,13 +8,19 @@ local HasNotificationActive = false
 RegisterNetEvent("tp_notify:sendNotification")
 AddEventHandler("tp_notify:sendNotification", function(title, message, actionType, notifyType, duration)
 
-    HasNotificationActive = not HasNotificationActive
+    if HasNotificationActive then
+        CooldownTime = 1
+    end
+
+    while HasNotificationActive do
+        Wait(250)
+    end
+
+    CooldownTime = duration
+		
+    HasNotificationActive = true
 
     SetNUIState(HasNotificationActive, title, message, actionType, notifyType)
-
-    Wait(1000 * duration)
-
-	SendNUIMessage({action = 'close'})
 end)
 
 -----------------------------------------------------------
@@ -59,4 +64,30 @@ end
 RegisterNUICallback('close', function()
     Wait(1000)
 	SetNUIState(false)
+end)
+
+-----------------------------------------------------------
+--[[ NUI Callbacks ]]--
+-----------------------------------------------------------
+
+-- The following task is running properly the cooldown display timer.
+-- It is mostly required when another notification is triggered while 
+-- There is already one running.
+Citizen.CreateThread(function() 
+    while true do
+        Wait(1000)
+
+        if CooldownTime > 0 then
+            CooldownTime = CooldownTime - 1
+
+            if CooldownTime <= 0 then
+
+                CooldownTime = 0
+
+                SendNUIMessage({action = 'close'})
+            end
+
+        end
+
+    end
 end)
