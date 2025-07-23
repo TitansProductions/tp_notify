@@ -31,3 +31,5 @@ TriggerEvent("tp_notify:sendNotification", "Mailbox Notification", "This is a no
 -- @param duration
 TriggerClientEvent("tp_notify:sendNotification", source, "Mailbox Notification", "This is a notification", "mail", "info", 15)
 ```
+
+<img width="716" height="304" alt="εικόνα" src="https://github.com/user-attachments/assets/a5e4cdae-2c06-4568-abdb-466aabb3c4d7" />
