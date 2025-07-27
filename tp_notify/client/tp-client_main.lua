@@ -6,7 +6,7 @@ local CooldownTime          = 0
 -----------------------------------------------------------
 
 RegisterNetEvent("tp_notify:sendNotification")
-AddEventHandler("tp_notify:sendNotification", function(title, message, actionType, notifyType, duration)
+AddEventHandler("tp_notify:sendNotification", function(title, message, actionType, notifyType, duration, align )
 
     if HasNotificationActive then
         CooldownTime = 1
@@ -20,7 +20,7 @@ AddEventHandler("tp_notify:sendNotification", function(title, message, actionTyp
 		
     HasNotificationActive = true
 
-    SetNUIState(HasNotificationActive, title, message, actionType, notifyType)
+    SetNUIState(HasNotificationActive, title, message, actionType, notifyType, align)
 end)
 
 -----------------------------------------------------------
@@ -31,12 +31,16 @@ OpenNUI = function ()
     SetNUIState(true)
 end
 
-SetNUIState = function(state, title, message, actionType, notifyType)
+SetNUIState = function(state, title, message, actionType, notifyType, align)
 
     HasNotificationActive = state
 
     if Config.NotifyTypes[notifyType] then
         notifyType = Config.NotifyTypes[notifyType]
+    end
+
+    if not align then
+        align = 'left'
     end
 
 	SendNUIMessage({
@@ -46,6 +50,7 @@ SetNUIState = function(state, title, message, actionType, notifyType)
         message = message,
         actionType = actionType,
         color = notifyType,
+        align = align,
 	})
 
 end
