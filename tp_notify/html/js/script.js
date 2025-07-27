@@ -35,7 +35,20 @@ $(function() {
 				$("#notify_message").text(item.message);
 
 				$("#notify_message").css("color", item.color);
-	
+
+				if (item.align == 'left') {
+					
+					$(".notify").css('margin-left', '-48vw');
+
+					$("#notify_title").css('margin-left', '6vw');
+					$("#notify_message").css('margin-left', '6vw');
+					$("#notify_action_image_display").css('margin-left', '1.5vw');
+
+				}else if (item.align == 'right'){
+					$(".notify").css('margin-left', '74vw');
+				}
+
+
 				$(".notify").fadeIn(500);
 
 			});
