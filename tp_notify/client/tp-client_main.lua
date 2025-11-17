@@ -8,6 +8,10 @@ local CooldownTime          = 0
 RegisterNetEvent("tp_notify:sendNotification")
 AddEventHandler("tp_notify:sendNotification", function(title, message, actionType, notifyType, duration, align )
 
+	if align == nil then 
+		align = "left"
+	end
+
     if HasNotificationActive then
         CooldownTime = 1
     end
@@ -96,3 +100,4 @@ Citizen.CreateThread(function()
 
     end
 end)
+
