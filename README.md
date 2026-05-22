@@ -8,28 +8,6 @@
 
 # Developers 
 
-> Client Trigger
+For all the required information and Development API, checkout our [Gitbook](https://titans-productions.gitbook.io/documentation/redm/utility-scripts/tp-notify)
 
-```lua
-
--- @param title
--- @param message
--- @param icon (icon name directly from img/types)
--- @param notificationType ("success", "error", "info")
--- @param duration
-TriggerEvent("tp_notify:sendNotification", "Mailbox Notification", "This is a notification", "mail", "info", 15)
-```
-
-> Server Trigger
-
-```lua
-
--- @param title
--- @param message
--- @param icon (icon name directly from img/types)
--- @param notificationType ("success", "error", "info")
--- @param duration
-TriggerClientEvent("tp_notify:sendNotification", source, "Mailbox Notification", "This is a notification", "mail", "info", 15)
-```
-
-<img width="716" height="304" alt="εικόνα" src="https://github.com/user-attachments/assets/a5e4cdae-2c06-4568-abdb-466aabb3c4d7" />
+Github no longer provides any information, we now use Gitbook instead which is more advanced and understandable / friendly.
